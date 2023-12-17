@@ -29,5 +29,14 @@ if [ $1 -ne 0 ]
      echo -e "$G you are a root user $N"
   fi
 
-  cp mongo.repo /etc/yum.repos.d &>>$LOGFILE
+  cp 1.1-mongo.repo /etc/yum.repos.d &>>$LOGFILE
   VALIDATE $? "Copied MongoDB Repo"
+
+  dnf install mongodb-org -y &>>$LOGFILE
+  VALIDATE $? "Installing MongoDB"
+  systemctl enable mongod
+  systemctl start mongod
+  sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>>$LOGFILE
+  VALIDATE $? "Remote access to MongoDB"
+  systemctl restart mongod &>>$LOGFILE
+  VALIDATE $? "MongoDB Restarted"
