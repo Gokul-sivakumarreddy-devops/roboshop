@@ -35,7 +35,9 @@ if [ $1 -ne 0 ]
   dnf install mongodb-org -y &>>$LOGFILE
   VALIDATE $? "Installing MongoDB"
   systemctl enable mongod
+  VALIDATE $? "Enabled MongoDB"
   systemctl start mongod
+  VALIDATE $? "Started MongoDB"
   sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>>$LOGFILE
   VALIDATE $? "Remote access to MongoDB"
   systemctl restart mongod &>>$LOGFILE
