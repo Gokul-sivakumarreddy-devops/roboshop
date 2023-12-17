@@ -40,7 +40,7 @@ VALIDATE $? "Enabling Redis"
 dnf install redis -y 
 VALIDATE $? "Installing nodejs" 
 
-sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis/redis.conf
 VALIDATE $? "Allowing Remote Connections"
 
 systemctl enable redis
