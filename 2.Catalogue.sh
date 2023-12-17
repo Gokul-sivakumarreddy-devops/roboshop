@@ -31,52 +31,52 @@ if [ $ID -ne 0 ]
 
 fi
 
-dnf module disable nodejs -y
-VALIDATE $? "Old nodejs disabled" &>>$LOGFILE
+dnf module disable nodejs -y &>>$LOGFILE
+VALIDATE $? "Old nodejs disabled" 
 
-dnf module enable nodejs:18 -y
-VALIDATE $? "Enabling nodejs" &>>$LOGFILE
+dnf module enable nodejs:18 -y &>>$LOGFILE
+VALIDATE $? "Enabling nodejs" 
 
-dnf install nodejs -y
-VALIDATE $? "Installing nodejs" &>>$LOGFILE
+dnf install nodejs -y &>>$LOGFILE
+VALIDATE $? "Installing nodejs" 
 
-useradd roboshop
-VALIDATE $? "Creating Roboshop User" &>>$LOGFILE
+useradd roboshop &>>$LOGFILE
+VALIDATE $? "Creating Roboshop User"
 
-mkdir /app
-VALIDATE $? "Creating app directory" &>>$LOGFILE
+mkdir /app &>>$LOGFILE
+VALIDATE $? "Creating app directory"
 
-curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
-VALIDATE $? "CDownloading Catalogue Application" &>>$LOGFILE
+curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
+VALIDATE $? "CDownloading Catalogue Application"
 
 cd /app
-unzip /tmp/catalogue.zip
+unzip /tmp/catalogue.zip &>>$LOGFILE
 
-VALIDATE $? "Unzipping Catalogue application" &>>$LOGFILE
+VALIDATE $? "Unzipping Catalogue application"
 
-npm install 
-VALIDATE $? "Installing dependencies" &>>$LOGFILE
+npm install &>>$LOGFILE
+VALIDATE $? "Installing dependencies"
 
-cp /home/centos/Roboshop-shell/2.1-catalogue.service /etc/systemd/system/catalogue.service
+cp /home/centos/roboshop/2.1-catalogue.service /etc/systemd/system/catalogue.service
 VALIDATE $? "Copying Catalogue service file"
 
-systemctl daemon-reload
-VALIDATE $? "Loading the service" &>>$LOGFILE
+systemctl daemon-reload &>>$LOGFILE
+VALIDATE $? "Loading the service"
 
-systemctl enable catalogue
-VALIDATE $? "Enabling Catalogue service" &>>$LOGFILE
+systemctl enable catalogue &>>$LOGFILE
+VALIDATE $? "Enabling Catalogue service"
 
-systemctl start catalogue
-VALIDATE $? "Starting Catalogue service" &>>$LOGFILE
+systemctl start catalogue &>>$LOGFILE
+VALIDATE $? "Starting Catalogue service"
 
-cp /home/centos/Roboshop-shell/2.2-mongo.repo /etc/yum.repos.d
+cp /home/centos/roboshop/2.2-mongo.repo /etc/yum.repos.d
 VALIDATE $? "Copying Mongo Repo"
 
-dnf install mongodb-org-shell -y
+dnf install mongodb-org-shell -y &>>$LOGFILE
 VALIDATE $? "Installing MongoDb Client" &>>$LOGFILE
 
-mongo --host $MONGODB_HOST </app/schema/catalogue.js
-VALIDATE $? "Loading Schema" &>>$LOGFILE
+mongo --host $MONGODB_HOST </app/schema/catalogue.js &>>$LOGFILE
+VALIDATE $? "Loading Catalogue data into MongoDB"
 
 
 
