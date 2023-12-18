@@ -52,8 +52,8 @@ fi
 mkdir -p /app &>>$LOGFILE     # -p  it will not create if already existing
 VALIDATE $? "Creating app directory"
 
-curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>>$LOGFILE
-VALIDATE $? "CDownloading Catalogue Application"
+curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip  &>>$LOGFILE
+VALIDATE $? "Downloading Catalogue Application"
 
 cd /app
 unzip /tmp/user.zip &>>$LOGFILE   # -o  overwrite files WITHOUT prompting
