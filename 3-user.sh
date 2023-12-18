@@ -56,7 +56,7 @@ curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>>$L
 VALIDATE $? "CDownloading Catalogue Application"
 
 cd /app
-unzip -o /tmp/catalogue.zip &>>$LOGFILE   # -o  overwrite files WITHOUT prompting
+unzip /tmp/user.zip &>>$LOGFILE   # -o  overwrite files WITHOUT prompting
 VALIDATE $? "Unzipping Catalogue application"
 
 npm install &>>$LOGFILE
