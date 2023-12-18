@@ -5,10 +5,11 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-MONG0DB_HOST=mongodb.practiceazure.com
+
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
+MONG0DB_HOST=mongodb.practiceazure.com
 
 echo "script stareted executing at $TIMESTAMP" &>> $LOGFILE
 
