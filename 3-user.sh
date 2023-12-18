@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 ID=$(id -u)
 R="\e[31m"
@@ -80,7 +80,7 @@ VALIDATE $? "Copying Mongo Repo"
 dnf install mongodb-org-shell -y &>>$LOGFILE
 VALIDATE $? "Installing MongoDb Client" &>>$LOGFILE
 
-mongo --host $MONGODB_HOST </app/schema/catalogue.js &>>$LOGFILE
+mongo --host $MONGODB_HOST </app/schema/user.js &>>$LOGFILE
 VALIDATE $? "Loading Catalogue data into MongoDB"
 
 
