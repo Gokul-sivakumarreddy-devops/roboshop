@@ -11,6 +11,7 @@ TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
 
+
 echo "script stareted executing at $TIMESTAMP" &>> $LOGFILE
 
 VALIDATE(){
