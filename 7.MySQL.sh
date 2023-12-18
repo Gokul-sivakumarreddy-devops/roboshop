@@ -51,3 +51,5 @@ mysql_secure_installation --set-root-pass RoboShop@1 &>> $LOGFILE
 VALIDATE $? "Setting MYSQL Root Password" 
 
 
+
+
