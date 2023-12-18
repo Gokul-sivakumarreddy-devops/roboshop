@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 ID=$(id -u)
 R="\e[31m"
@@ -57,7 +57,6 @@ VALIDATE $? "CDownloading Catalogue Application"
 
 cd /app
 unzip -o /tmp/catalogue.zip &>>$LOGFILE   # -o  overwrite files WITHOUT prompting
-
 VALIDATE $? "Unzipping Catalogue application"
 
 npm install &>>$LOGFILE
