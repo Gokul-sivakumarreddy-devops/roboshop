@@ -32,22 +32,22 @@ else
     echo "You are root user"
 fi # fi means reverse of if, indicating condition end
 
-dnf module disable mysql -y &>$LOGFILE
+dnf module disable mysql -y &>> $LOGFILE
 VALIDATE $? "Disabling Current SQL Repo" 
 
 cp 7.1-mysql.repo /etc/yum.repos.d/mysql.repo &>> $LOGFILE
 VALIDATE $? "Copied MySQl repo" 
 
-dnf install mysql-community-server -y &>$LOGFILE
+dnf install mysql-community-server -y &>> $LOGFILE
 VALIDATE $? "Installing MYSQL Server" 
 
-systemctl enable mysqld &>$LOGFILE
+systemctl enable mysqld &>> $LOGFILE
 VALIDATE $? "Disabling MYSQL Server" 
 
-systemctl start mysqld &>$LOGFILE
+systemctl start mysqld &>> $LOGFILE
 VALIDATE $? "Starting MYSQL Server"
 
-mysql_secure_installation --set-root-pass RoboShop@1 &>$LOGFILE
+mysql_secure_installation --set-root-pass RoboShop@1 &>> $LOGFILE
 VALIDATE $? "Setting MYSQL Root Password" 
 
 
