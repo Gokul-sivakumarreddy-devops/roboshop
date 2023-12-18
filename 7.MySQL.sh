@@ -35,7 +35,7 @@ fi # fi means reverse of if, indicating condition end
 dnf module disable mysql -y &>$LOGFILE
 VALIDATE $? "Disabling Current SQL Repo" 
 
-cp 7.1-MYSQL.repo /etc/yum.repos.d/mysql.repo &>$LOGFILE
+cp 7.1-mysql.repo /etc/yum.repos.d/mysql.repo &>$LOGFILE
 VALIDATE $? "Copying MySQL Repo" 
 
 dnf install mysql-community-server -y &>$LOGFILE
