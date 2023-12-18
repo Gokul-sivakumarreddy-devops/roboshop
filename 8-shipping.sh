@@ -78,7 +78,7 @@ dnf install mysql -y
 VALIDATE $? "Installing MySQL service" &>$LOGFILE
 
 mysql -h mysql.practiceazure.com -uroot -pRoboShop@1 < /app/schema/shipping.sql 
-VALIDATE $? "Setting cresentials" &>$LOGFILE
+VALIDATE $? "Loading Shipping data" &>$LOGFILE
 
 systemctl restart shipping
 VALIDATE $? "Restarting the service" &>$LOGFILE
