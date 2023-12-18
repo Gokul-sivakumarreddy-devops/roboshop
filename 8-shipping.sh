@@ -33,8 +33,8 @@ else
 fi # fi means reverse of if, indicating condition end
 
 
-dnf install maven -y
-VALIDATE $? "Installing Maven" &>$LOGFILE
+dnf install maven -y &>> $LOGFILE
+VALIDATE $? "Installing Maven"
 
 id roboshop #if roboshop user does not exist, then it is failure
 if [ $? -ne 0 ]
