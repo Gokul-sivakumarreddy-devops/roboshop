@@ -9,7 +9,7 @@ N="\e[0m"
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
-MONG0DB_HOST=mongodb.practiceazure.com
+
 
 echo "script stareted executing at $TIMESTAMP" &>> $LOGFILE
 
@@ -94,6 +94,6 @@ dnf install mongodb-org-shell -y &>> $LOGFILE
 
 VALIDATE $? "Installing MongoDB client"
 
-mongo --host $MONGDB_HOST </app/schema/user.js &>> $LOGFILE
+mongo --host mongodb.practiceazure.com </app/schema/user.js &>> $LOGFILE
 
 VALIDATE $? "Loading user data into MongoDB"
